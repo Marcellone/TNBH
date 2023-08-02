@@ -1,3 +1,11 @@
+        "████████╗███╗░░██╗██████╗░██╗░░██╗",
+        "╚══██╔══╝████╗░██║██╔══██╗██║░░██║",
+        "░░░██║░░░██╔██╗██║██████╦╝███████║",
+        "░░░██║░░░██║╚████║██╔══██╗██╔══██║",
+        "░░░██║░░░██║░╚███║██████╦╝██║░░██║",
+        "░░░╚═╝░░░╚═╝░░╚══╝╚═════╝░╚═╝░░╚═╝"
+
+
 # Programma per l'inserimento di numeri brevi TIM da CSV
 
 Questo programma consente di inserire numeri brevi TIM (Short Codes) da un file CSV nel sito [https://timcomunica.timbusiness.it](https://timcomunica.timbusiness.it). Il sito non offre la funzionalità di caricare i numeri brevi da un file CSV, ma questo programma utilizza Selenium per automatizzare il processo di inserimento.
