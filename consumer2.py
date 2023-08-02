@@ -14,16 +14,14 @@ def get_absolute_path(filename):
     current_directory = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(current_directory, filename)
 
-# Funzione per richiedere l'input dell'utente
 def get_user_input(prompt):
     try:
-        # Utilizza la funzione getpass per nascondere l'input della password
         return getpass.getpass(prompt)
     except Exception as error:
         print("Errore nell'input:", error)
         return None
 
-# Funzione per effettuare il login al sito
+# login al sito
 def login_to_website(username, password):
     print("Connessione in corso...")
     service = Service(executable_path='C:/Users/Utente/Desktop/script/chromedriver.exe')
@@ -64,10 +62,10 @@ def click_utenti_submenu(driver, wait):
     utenti_submenu.click()
     time.sleep(3)
 
-# Funzione per fare clic sul bottone dell'ufficio con l'ID specificato dall'utente
-def click_ufficio_button(driver, sede_id):
-    ufficio_button = driver.find_element(By.XPATH, f'//*[@id="{sede_id}"]/td[4]/button')
-    ufficio_button.click()
+# Funzione per fare clic sul bottone dell'telefono con l'ID specificato dall'utente
+def click_telefono_button(driver, sede_id):
+    telefono_button = driver.find_element(By.XPATH, f'//*[@id="{sede_id}"]/td[4]/button')
+    telefono_button.click()
     time.sleep(3)
 
 # Funzione per fare clic sul sottomenu per l'elemento selezionato
@@ -140,7 +138,7 @@ def main():
                 username_file.write(username)
     
     password = get_user_input("Inserisci la tua password: ")
-    sede_id = input("Inserisci l'ID sede che desideri modificare: ")
+    sede_id = input("Inserisci l'ID del telefono che desideri modificare: ")
 
     driver = login_to_website(username, password)
     wait = WebDriverWait(driver, 10)  # Creazione dell'oggetto wait
@@ -152,7 +150,7 @@ def main():
         navigate_to_sedi(driver)
         click_settore_button(driver)
         click_utenti_submenu(driver, wait)
-        click_ufficio_button(driver, sede_id)
+        click_telefono_button(driver, sede_id)
         click_sottomenu_elemento(driver, wait)
 
         file.seek(0)
