@@ -1,10 +1,4 @@
-
 *.csv
-
 username.txt
-
-script/.DS_Store
-
-script/chromedriver.exe
-
+.DS_Store
 chromedriver
