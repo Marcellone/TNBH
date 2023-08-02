@@ -1,7 +1,7 @@
 <div align="center">
 <!-- Titolo: -->
   <a href="https://github.com/Marcellone/TNBH/">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Logo_TIM_%282016%29.svg/2560px-Logo_TIM_%282016%29.svg.png" height="100">
+    <img src="https://drive.google.com/file/d/1CDtkVSs2YUhmvWThTg83t5mWdAxHZxFd/view?usp=drive_link" height="100">
   </a>
   <h1><a href="https://github.com/Marcellone/TNBH/">TNBH - TIM Numeri Brevi Helper</a></h1>
 <!-- Etichette: -->
@@ -34,14 +34,15 @@ Questo script Python ti consente di inserire numeri brevi nel sito web di TIM ut
 
 1. Clona o scarica questa repository.
 2. Installa le librerie Python necessarie eseguendo `pip install -r requirements.txt`.
-3. Assicurati di avere un file CSV contenente i dati dei numeri brevi nel seguente formato: `ID;Descrizione;NumeroTelefono;Nome`.
-4. Esegui lo script con `python csv_short_numbers.py`.
-5. Segui le istruzioni e fornisci il tuo nome utente, password e l'ID del numero di telefono che desideri modificare.
+3. Assicurati di avere un file CSV contenente i dati dei numeri brevi nel seguente formato: `ID;Descrizione;NumeroTelefono;Nome`. (il programma prenderà NumeroTelefono e Nome, nota che i primi due sono stati mantenuti perchè in fase di copiatura da altri centralini venivano inseriti e son comodi per inserire in maniera coordinata i valori. Se per esempio necessito alla shortcut 1 un numero, il 2 vuoto e il 3 con un numero, porremo il numero 2 con ntelefono e nome a 0)
+4. Esegui lo script con `python3 main.py`.
+5. Segui le istruzioni e fornisci il tuo nome utente, password e l'ID del telefono che desideri modificare e il nome del file CSV.
 6. Lo script si connetterà automaticamente al sito web di TIM, si sposterà alla sezione appropriata e inserirà i numeri brevi dal file CSV.
 
 ## Nota Importante
 
 Questo script è destinato solo a scopo educativo e non è ufficialmente supportato da TIM. Usalo a tuo rischio.
+Inoltre, lo script non gestisce errori eventuali, quindi potrebbe capitare l'interruzione randomica del programma.
 
 ## Licenza
 
