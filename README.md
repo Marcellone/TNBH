@@ -1,50 +1,66 @@
-        "████████╗███╗░░██╗██████╗░██╗░░██╗",
-        "╚══██╔══╝████╗░██║██╔══██╗██║░░██║",
-        "░░░██║░░░██╔██╗██║██████╦╝███████║",
-        "░░░██║░░░██║╚████║██╔══██╗██╔══██║",
-        "░░░██║░░░██║░╚███║██████╦╝██║░░██║",
-        "░░░╚═╝░░░╚═╝░░╚══╝╚═════╝░╚═╝░░╚═╝"
+<div align="center">
+<!-- Titolo: -->
+  <a href="https://github.com/Marcellone/TNBH/">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Logo_TIM_%282016%29.svg/2560px-Logo_TIM_%282016%29.svg.png" height="100">
+  </a>
+  <h1><a href="https://github.com/Marcellone/TNBH/">TNBH - TIM Numeri Brevi Helper</a></h1>
+<!-- Etichette: -->
+  <!-- Prima riga: -->
+  </a>
+  <a href="https://github.com/Marcellone/TNBH/blob/master/CONTRIBUTING.md">
+    <img src="https://img.shields.io/static/v1.svg?label=Contributions&message=Welcome&color=0059b3&style=flat-square" height="20" alt="Contributions Welcome">
+  </a>
+  <img src="https://img.shields.io/github/repo-size/Marcellone/TNBH.svg?label=Repo%20size&style=flat-square" height="20">
+   </a>
+   </a>
+  <!-- Seconda riga: -->
+  <br>
+  <a href="https://github.com/Marcellone/TNBH/actions">
+  </a>
+  <a href="https://github.com/pre-commit/pre-commit">
+    <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=flat-square" height="20" alt="pre-commit">
+  </a>
+  <a href="https://github.com/psf/black">
+    <img src="https://img.shields.io/static/v1?label=code%20style&message=black&color=black&style=flat-square" height="20" alt="code style: black">
+  </a>
+<!-- Breve descrizione: -->
+  <h3>Script Python per inserire numeri brevi TIM da CSV</h3>
+</div>
 
+## Informazioni
 
-# Programma per l'inserimento di numeri brevi TIM da CSV
+Questo script Python ti consente di inserire numeri brevi nel sito web di TIM utilizzando i dati di un file CSV. Automatizza il processo, semplificando e velocizzando la gestione dei numeri brevi.
 
-Questo programma consente di inserire numeri brevi TIM (Short Codes) da un file CSV nel sito [https://timcomunica.timbusiness.it](https://timcomunica.timbusiness.it). Il sito non offre la funzionalità di caricare i numeri brevi da un file CSV, ma questo programma utilizza Selenium per automatizzare il processo di inserimento.
+## Requisiti
 
-## Istruzioni per l'uso
+- Python 3.x
+- Browser Google Chrome (per interagire automaticamente con il web)
 
-1. Assicurati di avere installato Python sul tuo sistema.
-2. Clona questo repository o scarica il file principale del programma.
-3. Assicurati di avere installato il ChromeDriver corrispondente alla tua versione di Google Chrome.
-4. Assicurati di avere installato tutte le dipendenze necessarie elencate nel file `requirements.txt`. Puoi installarle eseguendo il comando:
+## Come Usare
 
-```
-pip install -r requirements.txt
-```
+1. Clona o scarica questa repository.
+2. Installa le librerie Python necessarie eseguendo `pip install -r requirements.txt`.
+3. Assicurati di avere un file CSV contenente i dati dei numeri brevi nel seguente formato: `ID;Descrizione;NumeroTelefono;Nome`.
+4. Esegui lo script con `python csv_short_numbers.py`.
+5. Segui le istruzioni e fornisci il tuo nome utente, password e l'ID del numero di telefono che desideri modificare.
+6. Lo script si connetterà automaticamente al sito web di TIM, si sposterà alla sezione appropriata e inserirà i numeri brevi dal file CSV.
 
-5. Inserisci i numeri brevi nel file CSV seguendo il formato corretto: ogni riga del file deve contenere due campi separati da punto e virgola (;). Il primo campo deve essere il numero di telefono breve (es. 12345) e il secondo campo deve essere il nome associato a quel numero breve (es. Dipartimento Marketing). Un esempio del formato del file CSV:
+## Nota Importante
 
-```
-12345;Dipartimento Marketing
-67890;Assistenza Clienti
-54321;Ufficio Acquisti
-```
-
-6. Avvia il programma eseguendo il seguente comando:
-
-```
-python main.py
-```
-
-7. Segui le istruzioni del programma e inserisci il tuo username, password e l'ID della sede desiderata.
-8. Il programma aprirà una finestra del browser Chrome e inizierà ad inserire i numeri brevi nel sito web automaticamente.
-9. Alla fine del processo, il programma terminerà e i numeri brevi saranno stati inseriti con successo nel sito web.
+Questo script è destinato solo a scopo educativo e non è ufficialmente supportato da TIM. Usalo a tuo rischio.
 
 ## Licenza
 
-Questo programma è distribuito con licenza GPL (GNU General Public License) versione 3 o versioni successive. Consulta il file `LICENSE` per i dettagli completi della licenza. Il copyright è di Alessandro Marcellino.
+Questo progetto è concesso in licenza ai sensi della Licenza Pubblica Generale GNU v3.0. Consulta il file [LICENSE](LICENSE) per ulteriori dettagli.
 
-## Avvertenza
+## Contributi
 
-Questo programma utilizza Selenium per automatizzare le azioni sul sito web. L'uso di questo programma potrebbe violare i termini di servizio del sito web. Utilizzalo a tuo rischio e pericolo. L'autore non è responsabile per eventuali conseguenze derivanti dall'uso di questo programma.
+Accogliamo con favore i contributi a questo progetto! Leggi le nostre [Linee Guida per i Contributi](CONTRIBUTING.md) prima di inviare una pull request.
 
-**Nota:** Questo software è stato creato a scopo didattico e potrebbe non essere conforme ai termini di servizio del sito web target. L'utilizzo di questo software è a tua discrezione e responsabilità.
+## Problemi
+
+Se incontri problemi nell'utilizzo dello script o hai suggerimenti per miglioramenti, apri una issue nella sezione [Problemi](https://github.com/Marcellone/TNBH/issues).
+
+## Contatti
+
+Per qualsiasi domanda o ulteriori informazioni, non esitare a contattare il proprietario del progetto via email o tramite [LinkedIn](https://www.linkedin.com/in/your-username/).
