@@ -33,7 +33,7 @@ python main.py
 
 ## Licenza
 
-Questo programma è distribuito con licenza GPL (GNU General Public License) versione 3 o versioni successive. Consulta il file `LICENSE` per i dettagli completi della licenza. Il copyright è di [tuo nome] (aggiorna con il tuo nome).
+Questo programma è distribuito con licenza GPL (GNU General Public License) versione 3 o versioni successive. Consulta il file `LICENSE` per i dettagli completi della licenza. Il copyright è di Alessandro Marcellino.
 
 ## Avvertenza
 
