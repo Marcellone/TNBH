@@ -1,7 +1,7 @@
 <div align="center">
 <!-- Titolo: -->
   <a href="https://github.com/Marcellone/TNBH/">
-    <img src="https://drive.google.com/file/d/1CDtkVSs2YUhmvWThTg83t5mWdAxHZxFd/view?usp=drive_link" height="100">
+    <img src="https://github.com/Marcellone/TNBH/blob/main/Logo.png" height="200">
   </a>
   <h1><a href="https://github.com/Marcellone/TNBH/">TNBH - TIM Numeri Brevi Helper</a></h1>
 <!-- Etichette: -->
