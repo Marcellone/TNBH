@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import NoSuchElementException
 import getpass
 
 def get_absolute_path(filename):
@@ -76,18 +77,19 @@ def main_menu():
 
 def delete_element(driver):
     while True:
+        try:
             delete_button = driver.find_element(By.XPATH, '//*[@id="1"]/td[5]/button/img')
             delete_button.click()
 
-            # Affronta il popup di conferma di Chrome e accetta
             alert = driver.switch_to.alert
             alert.accept()
 
-            # Attendi un po' e poi clicca a vuoto
             time.sleep(2)
             driver.find_element(By.XPATH, '//body').click()
             ActionChains(driver).click().perform()
             time.sleep(1)
+        except NoSuchElementException:
+            break
 
 def navigate_to_sedi(driver):
     sedi_button = driver.find_element(By.XPATH, '//*[@id="row"]/div[1]/div/div[1]/a[2]')
