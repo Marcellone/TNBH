@@ -228,8 +228,8 @@ def main():
         # Eliminazione di elementi
         navigate_to_sedi(driver)
         click_settore_button(id_sede, driver)
+        click_utenti_submenu(driver, wait)
         click_telefono_button(driver, id_centralino)
-        time.sleep(3)
         delete_element(driver)
     else:
         print("Opzione non valida o terminata.")
