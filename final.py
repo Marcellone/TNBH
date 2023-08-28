@@ -229,9 +229,10 @@ def main():
         navigate_to_sedi(driver)
         click_settore_button(id_sede, driver)
         click_telefono_button(driver, id_centralino)
+        time.sleep(3)
         delete_element(driver)
     else:
-        print("Opzione non valida.")
+        print("Opzione non valida o terminata.")
 
     driver.quit()
 
