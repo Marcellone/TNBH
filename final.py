@@ -223,7 +223,8 @@ def main():
                         numero_telefono = row[2]
                         nome = row[3]
                         add_new_element(driver, wait, numero_telefono, nome)
-                        print("Elemento aggiunto correttamente!")
+            
+            print("Elementi aggiunti correttamente")
 
         elif choice == '2':
             # Eliminazione di elementi
