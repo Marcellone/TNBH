@@ -68,8 +68,8 @@ def navigate_to_sedi(driver):
     sedi_button.click()
     time.sleep(3)
 
-def click_settore_button(driver):
-    settore_button = driver.find_element(By.XPATH, '//*[@id="2"]/td[4]/button')
+def click_settore_button(id_sede ,driver):
+    settore_button = driver.find_element(By.XPATH, f'//*[@id="{id_sede}"]/td[4]/button')
     settore_button.click()
     time.sleep(3)
 
@@ -80,8 +80,8 @@ def click_utenti_submenu(driver, wait):
     utenti_submenu.click()
     time.sleep(3)
 
-def click_telefono_button(driver, sede_id):
-    telefono_button = driver.find_element(By.XPATH, f'//*[@id="{sede_id}"]/td[4]/button')
+def click_telefono_button(driver, id_centralino):
+    telefono_button = driver.find_element(By.XPATH, f'//*[@id="{id_centralino}"]/td[4]/button')
     telefono_button.click()
     time.sleep(3)
 
@@ -164,7 +164,8 @@ def main():
                 username_file.write(username)
 
     password = get_user_input("Inserisci la tua password: ")
-    sede_id = input("Inserisci l'ID del telefono che desideri modificare: ")
+    id_sede = input("Inserisci l'ID della sede che desideri modificare: ")
+    id_centralino = input("Inserisci l'ID del telefono che desideri modificare: ")
 
     driver = login_to_website(username, password)
     wait = WebDriverWait(driver, 10)
@@ -176,9 +177,9 @@ def main():
         next(reader)
 
         navigate_to_sedi(driver)
-        click_settore_button(driver)
+        click_settore_button(id_sede ,driver)
         click_utenti_submenu(driver, wait)
-        click_telefono_button(driver, sede_id)
+        click_telefono_button(driver, id_centralino)
         click_sottomenu_elemento(driver, wait)
 
         file.seek(0)
