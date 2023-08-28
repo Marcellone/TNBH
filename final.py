@@ -89,6 +89,7 @@ def delete_element(driver):
             ActionChains(driver).click().perform()
             time.sleep(1)
         except NoSuchElementException:
+            print("Eliminazione completata")
             break
 
 def navigate_to_sedi(driver):
@@ -180,62 +181,66 @@ def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def main():
-    clear_console()
-    print_animated_welcome()
+    while True:
+        clear_console()
+        print_animated_welcome()
 
-    # Ottieni l'username salvato o richiedilo all'utente
-    username = get_username()
-    if not username:
-        username = input("Inserisci il tuo username: ")
-        save_username = input("Vuoi salvare l'username? (s/n): ").lower()
-        if save_username == 's':
-            with open(get_absolute_path('username.txt'), "w") as username_file:
-                username_file.write(username)
+        # Ottieni l'username salvato o richiedilo all'utente
+        username = get_username()
+        if not username:
+            username = input("Inserisci il tuo username: ")
+            save_username = input("Vuoi salvare l'username? (s/n): ").lower()
+            if save_username == 's':
+                with open(get_absolute_path('username.txt'), "w") as username_file:
+                    username_file.write(username)
 
-    password = get_user_input("Inserisci la tua password: ")
-    id_sede = input("Inserisci l'ID della sede che desideri modificare: ")
-    id_centralino = input("Inserisci l'ID del telefono che desideri modificare: ")
+        password = get_user_input("Inserisci la tua password: ")
+        id_sede = input("Inserisci l'ID della sede che desideri modificare: ")
+        id_centralino = input("Inserisci l'ID del telefono che desideri modificare: ")
 
-    driver = login_to_website(username, password)
-    wait = WebDriverWait(driver, 10)
+        driver = login_to_website(username, password)
+        wait = WebDriverWait(driver, 10)
 
-    choice = main_menu()
-    if choice == '1':
-        # Aggiunta di elementi
-        csv_file = get_csv_file()
+        choice = main_menu()
+        if choice == '1':
+            # Aggiunta di elementi
+            csv_file = get_csv_file()
 
-        with open(csv_file, 'r') as file:
-            reader = csv.reader(file, delimiter=';')
-            next(reader)
+            with open(csv_file, 'r') as file:
+                reader = csv.reader(file, delimiter=';')
+                next(reader)
 
+                navigate_to_sedi(driver)
+                click_settore_button(id_sede ,driver)
+                click_utenti_submenu(driver, wait)
+                click_telefono_button(driver, id_centralino)
+                click_sottomenu_elemento(driver, wait)
+
+                file.seek(0)
+
+                for row in reader:
+                    if len(row) >= 4:
+                        numero_telefono = row[2]
+                        nome = row[3]
+                        add_new_element(driver, wait, numero_telefono, nome)
+                        print("Elemento aggiunto correttamente!")
+
+        elif choice == '2':
+            # Eliminazione di elementi
             navigate_to_sedi(driver)
-            click_settore_button(id_sede ,driver)
+            click_settore_button(id_sede, driver)
             click_utenti_submenu(driver, wait)
             click_telefono_button(driver, id_centralino)
             click_sottomenu_elemento(driver, wait)
+            time.sleep(1)
+            delete_element(driver)
+        else:
+            print("Opzione non valida o terminata.")
 
-            file.seek(0)
+        driver.quit()
 
-            for row in reader:
-                if len(row) >= 4:
-                    numero_telefono = row[2]
-                    nome = row[3]
-                    add_new_element(driver, wait, numero_telefono, nome)
-                    print("Elemento aggiunto correttamente!")
-
-    elif choice == '2':
-        # Eliminazione di elementi
-        navigate_to_sedi(driver)
-        click_settore_button(id_sede, driver)
-        click_utenti_submenu(driver, wait)
-        click_telefono_button(driver, id_centralino)
-        click_sottomenu_elemento(driver, wait)
-        time.sleep(1)
-        delete_element(driver)
-    else:
-        print("Opzione non valida o terminata.")
-
-    driver.quit()
+        # Pausa prima di tornare al menu iniziale
+        input("Premi Enter per tornare al menu principale...")
 
 if __name__ == "__main__":
     main()
