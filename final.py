@@ -59,7 +59,7 @@ def login_to_website(username, password):
     password_input = driver.find_element(By.XPATH, '//*[@id="passAccedi"]/input')
     password_input.send_keys(password)
     login_button.click()
-    time.sleep(12)
+    time.sleep(8)
     print("Connessione effettuata!")
 
     return driver
@@ -136,7 +136,7 @@ def add_new_element(driver, wait, numero_telefono, nome):
     time.sleep(1)
     driver.find_element(By.XPATH, '//body').click()
     ActionChains(driver).click().perform()
-    time.sleep(3)
+    time.sleep(4)
 
 def create_username_file_if_not_exists():
     username_file_path = get_absolute_path('username.txt')
