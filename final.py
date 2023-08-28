@@ -76,21 +76,18 @@ def main_menu():
 
 def delete_element(driver):
     while True:
-        try:
-            # Trova il pulsante di eliminazione per la sede specificata
             delete_button = driver.find_element(By.XPATH, '//*[@id="1"]/td[5]/button/img')
             delete_button.click()
 
+            # Affronta il popup di conferma di Chrome e accetta
             alert = driver.switch_to.alert
             alert.accept()
 
             # Attendi un po' e poi clicca a vuoto
-            time.sleep(3)
+            time.sleep(2)
             driver.find_element(By.XPATH, '//body').click()
             ActionChains(driver).click().perform()
-        except:
-            # Esci dal ciclo se il pulsante di eliminazione non è più presente
-            break
+            time.sleep(1)
 
 def navigate_to_sedi(driver):
     sedi_button = driver.find_element(By.XPATH, '//*[@id="row"]/div[1]/div/div[1]/a[2]')
