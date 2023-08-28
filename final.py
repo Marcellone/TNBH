@@ -63,6 +63,35 @@ def login_to_website(username, password):
 
     return driver
 
+def main_menu():
+    print("╔════════════════════════════════╗")
+    print("║       MENU PRINCIPALE          ║")
+    print("╠════════════════════════════════╣")
+    print("║ 1. Aggiungi elemento           ║")
+    print("║ 2. Elimina elementi            ║")
+    print("╚════════════════════════════════╝")
+    choice = input("Inserisci il numero corrispondente all'opzione desiderata: ")
+    return choice
+
+
+def delete_element(driver):
+    while True:
+        try:
+            # Trova il pulsante di eliminazione per la sede specificata
+            delete_button = driver.find_element(By.XPATH, '//*[@id="1"]/td[5]/button/img')
+            delete_button.click()
+
+            alert = driver.switch_to.alert
+            alert.accept()
+
+            # Attendi un po' e poi clicca a vuoto
+            time.sleep(3)
+            driver.find_element(By.XPATH, '//body').click()
+            ActionChains(driver).click().perform()
+        except:
+            # Esci dal ciclo se il pulsante di eliminazione non è più presente
+            break
+
 def navigate_to_sedi(driver):
     sedi_button = driver.find_element(By.XPATH, '//*[@id="row"]/div[1]/div/div[1]/a[2]')
     sedi_button.click()
@@ -155,6 +184,7 @@ def main():
     clear_console()
     print_animated_welcome()
 
+    # Ottieni l'username salvato o richiedilo all'utente
     username = get_username()
     if not username:
         username = input("Inserisci il tuo username: ")
@@ -170,26 +200,38 @@ def main():
     driver = login_to_website(username, password)
     wait = WebDriverWait(driver, 10)
 
-    csv_file = get_csv_file()
+    choice = main_menu()
+    if choice == '1':
+        # Aggiunta di elementi
+        csv_file = get_csv_file()
 
-    with open(csv_file, 'r') as file:
-        reader = csv.reader(file, delimiter=';')
-        next(reader)
+        with open(csv_file, 'r') as file:
+            reader = csv.reader(file, delimiter=';')
+            next(reader)
 
+            navigate_to_sedi(driver)
+            click_settore_button(id_sede ,driver)
+            click_utenti_submenu(driver, wait)
+            click_telefono_button(driver, id_centralino)
+            click_sottomenu_elemento(driver, wait)
+
+            file.seek(0)
+
+            for row in reader:
+                if len(row) >= 4:
+                    numero_telefono = row[2]
+                    nome = row[3]
+                    add_new_element(driver, wait, numero_telefono, nome)
+                    print("Elemento aggiunto correttamente!")
+
+    elif choice == '2':
+        # Eliminazione di elementi
         navigate_to_sedi(driver)
-        click_settore_button(id_sede ,driver)
-        click_utenti_submenu(driver, wait)
+        click_settore_button(id_sede, driver)
         click_telefono_button(driver, id_centralino)
-        click_sottomenu_elemento(driver, wait)
-
-        file.seek(0)
-
-        for row in reader:
-            if len(row) >= 4:
-                numero_telefono = row[2]
-                nome = row[3]
-                add_new_element(driver, wait, numero_telefono, nome)
-                print("Elemento aggiunto correttamente!")
+        delete_element(driver)
+    else:
+        print("Opzione non valida.")
 
     driver.quit()
 
